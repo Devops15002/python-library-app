@@ -14,7 +14,7 @@ services:
      replicas: 1
     ports:
       - "5001:5001"
-    network:
+    networks:
        - mynetwork
     depends_on:
       - db
@@ -25,7 +25,7 @@ services:
      replicas: 1
      ports:
       - "5002:5002"
-    network:
+    networks:
        - mynetwork
     depends_on:
        - db
@@ -36,11 +36,11 @@ services:
      replicas: 1
      ports:
       - "5003:5003"
-    network:
+    networks:
        - mynetwork
     depends_on:
        - db
-    network:
+    networks:
        - mynetwork
     depends_on:
        - db
@@ -51,13 +51,13 @@ services:
      replicas: 1
      ports:
       - "3000:3000"
-    network:
+    networks:
        - mynetwork
     depends_on:
       - auth
       - book
       - borrow
 
-   network:
+   networks:
     mynetwork:
      driver: overlay     
