@@ -1,59 +1,63 @@
----
 version: '3.8'
+
 services:
-   db:
+
+  db:
     image: abhilash15002/libraryapp:db-image
-    deploy: 
-     replicas: 1
+    deploy:
+      replicas: 1
     ports:
       - "3306:3306"
+    networks:
+      - mynetwork
 
-   auth:
+  auth:
     image: abhilash15002/libraryapp:auth-image
-    deploy: 
-     replicas: 1
+    deploy:
+      replicas: 1
     ports:
       - "5001:5001"
     networks:
-       - mynetwork
+      - mynetwork
     depends_on:
       - db
 
-   book:
-    image: abhilash15002/libraryapp:book-image 
-    deploy: 
-     replicas: 1
+  book:
+    image: abhilash15002/libraryapp:book-image
+    deploy:
+      replicas: 1
     ports:
       - "5002:5002"
     networks:
-       - mynetwork
+      - mynetwork
     depends_on:
-       - db
+      - db
 
-   borrow:
+  borrow:
     image: abhilash15002/libraryapp:borrow-image
-    deploy: 
-     replicas: 1
+    deploy:
+      replicas: 1
     ports:
       - "5003:5003"
     networks:
-       - mynetwork
+      - mynetwork
     depends_on:
-       - db
+      - db
 
-   frontend:
+  frontend:
     image: abhilash15002/libraryapp:frontend-image
-    deploy: 
-     replicas: 1
+    deploy:
+      replicas: 1
     ports:
       - "3000:3000"
     networks:
-       - mynetwork
+      - mynetwork
     depends_on:
       - auth
       - book
       - borrow
 
-   networks:
-    mynetwork:
-     driver: overlay     
+
+networks:
+  mynetwork:
+    driver: overlay
