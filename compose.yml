@@ -11,7 +11,7 @@ services:
     networks:
       - mynetwork
 
-  auth:
+  auth_service:
     image: abhilash15002/libraryapp:auth-image
     deploy:
       replicas: 1
@@ -22,7 +22,7 @@ services:
     depends_on:
       - db
 
-  book:
+  book_service:
     image: abhilash15002/libraryapp:book-image
     deploy:
       replicas: 1
@@ -33,7 +33,7 @@ services:
     depends_on:
       - db
 
-  borrow:
+  borrow_service:
     image: abhilash15002/libraryapp:borrow-image
     deploy:
       replicas: 1
