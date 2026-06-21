@@ -23,7 +23,7 @@ services:
     image: abhilash15002/libraryapp:book-image 
     deploy: 
      replicas: 1
-     ports:
+    ports:
       - "5002:5002"
     networks:
        - mynetwork
@@ -34,12 +34,8 @@ services:
     image: abhilash15002/libraryapp:borrow-image
     deploy: 
      replicas: 1
-     ports:
+    ports:
       - "5003:5003"
-    networks:
-       - mynetwork
-    depends_on:
-       - db
     networks:
        - mynetwork
     depends_on:
@@ -49,7 +45,7 @@ services:
     image: abhilash15002/libraryapp:frontend-image
     deploy: 
      replicas: 1
-     ports:
+    ports:
       - "3000:3000"
     networks:
        - mynetwork
