@@ -16,7 +16,7 @@ services:
       - "5001:5001"
     network:
        - mynetwork
-     depends_on:
+    depends_on:
       - db
 
    book:
